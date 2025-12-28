@@ -19,7 +19,7 @@ String marketLower (String data) {
 
 <%// 스크립트 태그의 처리
 for (int i=1; i <= count; i++){
-	out.println("Java Server Pages" + i + ".<br>");
+	out.println("Java Server Pages" + i +".<br>");
 }
 %>
 

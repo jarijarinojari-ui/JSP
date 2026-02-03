@@ -1,0 +1,37 @@
+package com.global.mvc.servlet;
+
+import java.io.IOException;
+
+import com.global.mvc.controoler.AController;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet(urlPatterns = "/")
+public class AServlet extends HttpServlet{
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		System.out.println(this);
+		doPost(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+		
+		String uri = req.getRequestURI();
+		System.out.println(uri);
+		if (uri.contains("NEW_MVC2/a/uuid")) {
+			String view = AController.a(req);
+			req.getRequestDispatcher(view).forward(req, resp);
+		}
+		if (uri.contains("NEW_MVC2/a/redirect")) {
+			resp.sendRedirect("https://www.naver.com");
+		}
+	}
+}

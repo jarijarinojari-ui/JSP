@@ -1,0 +1,30 @@
+package com.global.mvc.servlet;
+
+import java.io.IOException;
+
+import com.global.mvc.controller.AController;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+public class AServlet extends HttpServlet{
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doPost(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String uri = req.getRequestURI();
+		System.out.println(uri);
+		if ( uri.contains("/NEW_MVC/a/uuid")) {
+			String view = AController.a(req);
+			req.getRequestDispatcher(view).forward(req, resp);
+		}
+	}
+}
